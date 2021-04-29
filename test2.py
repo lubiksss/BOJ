@@ -1,4 +1,5 @@
-f = ['a','b','c']
+a = [55]
 
-for i in f:
-    print(i, end =';')
+b = list(map(int,a))
+
+print(sum(b))
