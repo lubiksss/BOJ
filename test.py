@@ -1,9 +1,3 @@
-from pprint import pprint
-
-paper_size = int(input())
-paper = [list(map(int, input().split())) for __ in range(paper_size)]
-
-pprint(paper)
-
-small_paper = [row[:paper_size//2] for row in paper[:paper_size//2]]
-pprint(small_paper)
+a = 5
+temp = [[1  if x==y else 0 for x in range(a)]for y in range(a)]
+print(temp)
