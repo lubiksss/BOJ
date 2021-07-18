@@ -25,3 +25,4 @@ while True:
     
     print(max_sq)
         
+    
