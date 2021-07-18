@@ -1,6 +1,4 @@
-a = 5
-temp = [[1  if x==y else 0 for x in range(a)]for y in range(a)]
-print(temp)
+a = []
 
-a = 10
-b = 11
+if len(a)!=0 and a[-1] != 0:
+    print('hello')
