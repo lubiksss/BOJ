@@ -20,28 +20,28 @@ def max_area(left, right):
                 break
 
             elif new_left == left or hist[new_left] == 0:
-                new_height = min(new_height,hist[new_right+1])
-                new_right +=1
-                new_width +=1
+                new_height = min(new_height, hist[new_right+1])
+                new_right += 1
+                new_width += 1
 
             elif new_right == right or hist[new_right] == 0:
-                new_height = min(new_height,hist[new_left-1])
-                new_left -=1
-                new_width +=1
+                new_height = min(new_height, hist[new_left-1])
+                new_left -= 1
+                new_width += 1
 
             else:
                 if hist[new_left-1] >= hist[new_right+1]:
-                    new_height = min(new_height,hist[new_left-1])
-                    new_left -=1
-                    new_width +=1
+                    new_height = min(new_height, hist[new_left-1])
+                    new_left -= 1
+                    new_width += 1
                 else:
-                    new_height = min(new_height,hist[new_right+1])
-                    new_right +=1
-                    new_width +=1
+                    new_height = min(new_height, hist[new_right+1])
+                    new_right += 1
+                    new_width += 1
 
-            temp = max(temp,new_width*new_height)
-        
-        return max(max_area(left,half_idx),max_area(half_idx+1,right),temp)
+            temp = max(temp, new_width*new_height)
+
+        return max(max_area(left, half_idx), max_area(half_idx+1, right), temp)
 
 
 while True:
