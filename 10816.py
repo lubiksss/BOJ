@@ -8,26 +8,38 @@ m = int(input())
 num_list2 = list(map(int, input().split()))
 
 def lower_bound(start, end, target):
-
-    while end>start:
+    tmp = -1
+    while start <= end:
         mid = (start+end)//2
-        if num_list[mid] >= target:
-            end = mid
-        else:
+        if num_list[mid] == target:
+            tmp = mid
+            end = mid-1
+        elif target > num_list[mid]:
             start = mid+1
-    return end+1
+        else:
+            end = mid-1
+    return tmp
         
 def upper_bound(start, end, target):
-
-    while end>start:
+    tmp = -1
+    while start <= end:
         mid = (start+end)//2
-        if num_list[mid] > target:
-            end = mid
-        else:
+        if num_list[mid] == target:
+            tmp = mid
             start = mid+1
-    return end+1
+        elif target > num_list[mid]:
+            start = mid+1
+        else:
+            end = mid-1
+    return tmp
 
-num_list = sorted(num_list)
+num_list.sort()
 
 for num in num_list2:
-    print(upper_bound(0,n, num) - lower_bound(0,n,num), end = ' ')
+    ub = upper_bound(0,n-1,num)
+    lb = lower_bound(0,n-1,num)
+
+    if ub<0:
+        print(0, end = ' ')
+    else:
+        print(ub-lb+1, end = ' ')

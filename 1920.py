@@ -11,30 +11,23 @@ m = int(input())
 num_list2 = list(map(int, input().split()))
 
 ## 입력을 절반씩 잘라가며 탐색하니 logn
-def isinlist(x):
-
-    start = 0
-    end = len(num_list)-1
-
-    while True:
+def isinlist(start, end, x):
+    tmp = 0
+    while start <= end:
         mid = (start+end)//2
         if x == num_list[mid]:
-            return 1
+            tmp = 1
+            break
 
         elif x > num_list[mid]:
-            if mid+1 > end:
-                return 0
-            else:
-                start = mid+1
+            start = mid+1
 
         else:
-            if mid-1 <start:
-                return 0
-            else:
-                end = mid-1
+            end = mid-1
+    return tmp
 
 
 for num in num_list2:
-    print(isinlist(num))
+    print(isinlist(0, n-1, num))
 
 ## 따라서 코드의 총시간복잡도는 nlogn + logn = nlogn이다.
