@@ -1,8 +1,11 @@
-a = 0
-b = False
+num_list = [1,1,2,2,4,4,5,5]
 
-if not a:
-    print(a)
 
-if not b:
-    print(b)
+def lower_bound(start, end, target):
+    while start < end:
+        mid = (start+end)//2
+        if num_list[mid] >= target:
+            end = mid
+        else:
+            start = mid+1
+    return end
