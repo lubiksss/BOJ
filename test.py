@@ -1,11 +1,17 @@
-num_list = [1,1,2,2,4,4,5,5]
+heap = [5,4,3,2,1,6]
+print(heap)
 
-
-def lower_bound(start, end, target):
-    while start < end:
-        mid = (start+end)//2
-        if num_list[mid] >= target:
-            end = mid
+def heapify_up(index):
+    child = index
+    while child != 0:
+        parent = (child-1)//2
+        if heap[child] > heap[parent]:
+            heap[child], heap[parent] = heap[parent], heap[child]
+            child = parent
         else:
-            start = mid+1
-    return end
+            return
+
+
+heapify_up(4)
+
+print(heap)
