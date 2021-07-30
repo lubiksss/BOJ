@@ -23,5 +23,6 @@ def bfs():
             if (nexty<n and nexty>=0) and (nextx<m and nextx>=0) and maze[nexty][nextx] == 1:
                 bfs.append([nexty,nextx])
                 path[nexty][nextx] = path[basey][basex]+1
+                
 bfs()
 print(path[n-1][m-1])
