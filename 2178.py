@@ -1,39 +1,27 @@
+import sys
+import copy
+from pprint import pprint
 from collections import deque as dq
-def pm(maze):
-    for i in range(len(maze)):
-        print(maze[i])
-    print('\n')
+input = sys.stdin.readline
 
-n, m = map(int, input().split())
-maze = [[int(n) for n in input()] for _ in range(n)]
-v_maze = [[0 for _ in range(m)]for _ in range(n)]
+n, m = map(int,input().split())
+maze = [list(map(int,list(input().strip()))) for __ in range(n)]
+path = [[0]*m for __ in range(n)]
+path[0][0] = 1
 
-que = dq([[0,0]])
-v_maze[0][0] =1
-
-while que:
-    y, x = que.popleft()
-    # 위 검색
-    if y-1 >=0:
-        if maze[y-1][x] ==1 and v_maze[y-1][x] ==0:
-            que.append([y-1,x])
-            v_maze[y-1][x] = v_maze[y][x]+1
-    # 아래쪽
-    if y+1 < n:
-        if maze[y+1][x] ==1 and v_maze[y+1][x] ==0:
-            que.append([y+1,x])
-            v_maze[y+1][x] = v_maze[y][x]+1
-    # 왼쪽 검색
-    if x-1 >= 0:
-        if maze[y][x-1] ==1 and v_maze[y][x-1] ==0:
-            que.append([y,x-1])
-            v_maze[y][x-1] = v_maze[y][x]+1
-    # 오른쪽 검색
-    if x+1 < m:
-        if maze[y][x+1] ==1 and v_maze[y][x+1] ==0:
-            que.append([y,x+1])
-            v_maze[y][x+1] = v_maze[y][x]+1
-
-pm(maze)
-pm(v_maze)
-print(v_maze[n-1][m-1])
+def bfs():
+    bfs = dq()
+    bfs.append([0,0])
+    dy = [0,1,0,-1]
+    dx = [1,0,-1,0]
+    while bfs:
+        basey,basex = bfs.popleft()
+        maze[basey][basex] = 0
+        for i in range(4):
+            nexty = basey+dy[i]
+            nextx = basex+dx[i]
+            if (nexty<n and nexty>=0) and (nextx<m and nextx>=0) and maze[nexty][nextx] == 1:
+                bfs.append([nexty,nextx])
+                path[nexty][nextx] = path[basey][basex]+1
+bfs()
+print(path[n-1][m-1])
