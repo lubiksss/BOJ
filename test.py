@@ -1,3 +1,3 @@
 a = '1234'
 
-print(list(a))
+print(list(map(int,a)))
