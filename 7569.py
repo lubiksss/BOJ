@@ -2,12 +2,6 @@ import sys
 from collections import deque as dq
 input = sys.stdin.readline
 
-def pprint(map):
-    for box in map:
-        for row in box:
-            print(row)
-        print('**************')
-
 m,n,h= map(int,input().split())
 map = [[list(map(int,input().split())) for __ in range(n)]for __ in range(h)]
 
