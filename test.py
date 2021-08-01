@@ -1,3 +1,6 @@
-a = '1234'
+a = [1,2]
 
-print(list(map(int,a)))
+y,x = a[0],a[1]
+
+if [y,x] == a:
+    print(10)
