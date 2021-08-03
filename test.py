@@ -1,6 +1,6 @@
-a = {1: [1, 2, 3, 4]}
+a = 5
 b = a
 
-b[1] = 10
-print(a)
-print(b)
+b = 10
+
+print(a, b)
