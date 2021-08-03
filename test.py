@@ -1,3 +1,6 @@
-a = '1234'
+a = {1: [1, 2, 3, 4]}
+b = a
 
-print(list(map(int,a)))
+b[1] = 10
+print(a)
+print(b)
