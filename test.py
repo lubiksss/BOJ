@@ -1,6 +1,11 @@
-a = 5
-b = a
+a = 10
 
-b = 10
 
-print(a, b)
+def test():
+    a = 20
+    print(a)
+
+
+test()
+
+print(a)
