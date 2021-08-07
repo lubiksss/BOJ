@@ -1,5 +1,8 @@
-import heapq
+import sys
 
-a = []
 
-heapq.heappush()
+a = sys.maxsize
+b = a+a
+
+if a < b:
+    print(a, b)
