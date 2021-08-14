@@ -19,7 +19,7 @@ def make_graph(vertex_num, edge_num):
     return graph
 
 
-def BFS(graph, dist_list):
+def Dijkstra(graph, dist_list):
     heap = []
     heapq.heappush(heap, [0, vertex_start])
 
@@ -35,7 +35,7 @@ def BFS(graph, dist_list):
 
 
 graph = make_graph(vertex_num, edge_num)
-dist_list = (BFS(graph, dist_list))
+dist_list = (Dijkstra(graph, dist_list))
 
 for dist in dist_list:
     print('INF' if dist == sys.maxsize else dist)
