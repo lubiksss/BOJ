@@ -1,7 +1,7 @@
-import sys
+a = 1
 
-a = sys.maxsize
-b = sys.maxsize
-
-if a*2 > b:
-    print(1)
+while True:
+    if a == 1:
+        print(1)
+        print(2)
+        continue
