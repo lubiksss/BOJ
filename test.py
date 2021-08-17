@@ -1,7 +1,3 @@
-a = 1
+a = []
 
-while True:
-    if a == 1:
-        print(1)
-        print(2)
-        continue
+print(len(a))
