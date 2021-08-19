@@ -24,7 +24,9 @@ def Dijkstra(graph, dist_list):
     heapq.heappush(heap, [0, vertex_start])
 
     while heap:
-        __, base_node = heapq.heappop(heap)
+        base_dist, base_node = heapq.heappop(heap)
+        if base_dist > dist_list[base_node]:
+            continue
         for next_node, weight in graph[base_node]:
             next_dist = dist_list[base_node] + weight
             if dist_list[next_node] > next_dist:

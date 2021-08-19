@@ -1,3 +1,7 @@
-import sys
-a = False
-print(sys.getsizeof(a))
+import heapq
+
+a = [0]
+
+heapq.heappush(a, -1)
+
+print(a)
