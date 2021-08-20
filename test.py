@@ -1,4 +1,5 @@
-a = '1'
+import sys
+a = 'afasdfdsdfdsfdfdasffsd'
 
-if a:
-    print(1)
+
+print(sys.getsizeof(a))

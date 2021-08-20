@@ -3,10 +3,10 @@ from collections import deque as dq
 input = sys.stdin.readline
 
 N = int(input())
-prev_path = [0, 0] + [0]*(N-1)
 
 que = dq()
 visited = [False] * (N+1)
+prev_path = [0, 0] + [0]*(N-1)
 
 que.append([1, 0])
 visited[1] = True
