@@ -1,4 +1,5 @@
-a = '1'
+import bisect
 
-if a:
-    print(1)
+a = [1]
+
+print(a[1:])
