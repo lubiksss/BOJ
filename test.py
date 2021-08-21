@@ -1,5 +1,5 @@
-import bisect
+import sys
+a = 'afasdfdsdfdsfdfdasffsd'
 
-a = [1]
 
-print(a[1:])
+print(sys.getsizeof(a))

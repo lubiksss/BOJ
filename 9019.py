@@ -3,20 +3,20 @@ import sys
 input = sys.stdin.readline
 
 
-def DSLR(num, button):
-    if button == 'D':
-        result = 2*num
-        if result > 9999:
-            result = result % 10000
-    elif button == 'S':
-        result = num-1
-        if result == 0:
-            result = 9999
-    elif button == 'L':
-        result = int(str(num).zfill(4)[1:] + str(num).zfill(4)[0])
-    elif button == 'R':
-        result = int(str(num).zfill(4)[3] + str(num).zfill(4)[:3])
-    return result
+def fD(num):
+    return num*2 % 10000
+
+
+def fS(num):
+    return (num-1) % 10000
+
+
+def fL(num):
+    return ((num*10)+(num//1000)) % 10000
+
+
+def fR(num):
+    return ((num % 10)*1000 + (num//10)) % 10000
 
 
 tc = int(input())
@@ -36,31 +36,40 @@ for __ in range(tc):
         if v == end:
             break
 
-        D = DSLR(v, 'D')
-        S = DSLR(v, 'S')
-        L = DSLR(v, 'L')
-        R = DSLR(v, 'R')
+        D = fD(v)
+        S = fS(v)
+        L = fL(v)
+        R = fR(v)
 
         if visited[D] == False:
             que.append(D)
-            path[D] = ['D', v]
+            path[D] = [0, v]
             visited[D] = True
         if visited[S] == False:
             que.append(S)
-            path[S] = ['S', v]
+            path[S] = [1, v]
             visited[S] = True
         if visited[L] == False:
             que.append(L)
-            path[L] = ['L', v]
+            path[L] = [2, v]
             visited[L] = True
         if visited[R] == False:
             que.append(R)
-            path[R] = ['R', v]
+            path[R] = [3, v]
             visited[R] = True
 
     idx = end
-    tmp = ''
+    tmp = []
     while idx != start:
-        tmp += path[idx][0]
+        if path[idx][0] == 0:
+            tmp.append('D')
+        elif path[idx][0] == 1:
+            tmp.append('S')
+        elif path[idx][0] == 2:
+            tmp.append('L')
+        else:
+            tmp.append('R')
         idx = path[idx][1]
-    print(''.join(reversed(tmp)))
+    for i in reversed(tmp):
+        print(i, end='')
+    print()
