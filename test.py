@@ -1,5 +1,3 @@
-import sys
-a = 'afasdfdsdfdsfdfdasffsd'
+a = [0] * (-1)
 
-
-print(sys.getsizeof(a))
+print(a)
