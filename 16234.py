@@ -1,76 +1,64 @@
-
+from pprint import pprint
+from collections import deque as dq
 from copy import deepcopy
+import sys
+input = sys.stdin.readline
 
-class Posi:
-    x = 0
-    y = 0
+N, L, R = map(int, input().split())
+map = [list(map(int, input().split())) for __ in range(N)]
 
+dy = [0, 1, 0, -1]
+dx = [1, 0, -1, 0]
 
-def pm(lista):
-    for i in range(len(lista)):
-        print(lista[i])
-    print('\n')
+sol = 0
 
+while True:
+    que = dq()
+    visited = [[False]*N for __ in range(N)]
+    nation = [[] for __ in range(N**2+1)]
+    cnt = 1
+    for row in range(N):
+        for col in range(N):
 
-def bfs(y, x, index):
-    visited = [[0 for _ in range(map_size)]for _ in range(map_size)]
-    visited[y][x] = 1
-    status[y][x] = index
-    que = [[y, x]]
-    dy = [0, 0, -1, 1]
-    dx = [-1, 1, 0, 0]
-
-    while que:
-        b, a = que.pop(0)
-
-        for i in range(4):
-            next = Posi()
-            next.y = b + dy[i]
-            next.x = a + dx[i]
-
-            if next.y < 0 or next.y >= map_size or next.x < 0 or next.x >= map_size:
+            if visited[row][col]:
                 continue
 
-            delta = abs(map[b][a] - map[next.y][next.x])
-            if visited[next.y][next.x] == 0 and delta >= left and delta <= right:
-                visited[next.y][next.x] = 1
-                status[next.y][next.x] = index
-                que.append([next.y, next.x])
+            que.append([row, col])
+            visited[row][col] = cnt
+            nation[cnt].append(map[row][col])
 
-map_size, left, right = map(int, input().split())
-map = [[int(i) for i in input().split()]for _ in range(map_size)]
+            while que:
+                base_y, base_x = que.popleft()
 
-is_update = True
-number = 0
-while is_update:
-    is_update = False
-    temp = deepcopy(map)
-    status = [[0 for _ in range(map_size)]for _ in range(map_size)]
-    index = 0
-    sum = [0 for _ in range((map_size**2)+1)]
-    count = [0 for _ in range((map_size**2)+1)]
+                for i in range(4):
+                    next_y = base_y + dy[i]
+                    next_x = base_x + dx[i]
 
-    for y in range(map_size):
-        for x in range(map_size):
-            if status[y][x] == 0:
-                index += 1
-                bfs(y, x, index)
-    # pm(status)
+                    if 0 <= next_x < N and 0 <= next_y < N and not visited[next_y][next_x]:
+                        if L <= abs(map[base_y][base_x]-map[next_y][next_x]) <= R:
+                            que.append([next_y, next_x])
+                            visited[next_y][next_x] = cnt
+                            nation[cnt].append(map[next_y][next_x])
+            cnt += 1
 
-    for y in range(map_size):
-        for x in range(map_size):
-            for i in range(1,index+1):
-                if status[y][x] == i:
-                    sum[i] += map[y][x]
-                    count[i] +=1
+    # print('prev')
+    # pprint(visited)
+    # print(nation)
+    # pprint(map)
+    map_test = deepcopy(map)
 
-    for y in range(map_size):
-        for x in range(map_size):
-            map[y][x] = sum[status[y][x]]//count[status[y][x]]
-    # pm(map)
+    for row in range(N):
+        for col in range(N):
+            map[row][col] = sum(nation[visited[row][col]]
+                                )//len(nation[visited[row][col]])
 
-    if temp != map:
-        is_update = True
-        number +=1        
+    # print('next')
+    # pprint(visited)
+    # print(nation)
+    # pprint(map)
 
-print(number)
+    if map == map_test:
+        break
+    else:
+        sol += 1
+print(sol)
