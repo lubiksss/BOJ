@@ -1,4 +1,9 @@
-a = {1: 1, 2: 2}
+import sys
+input = sys.stdin.readline
 
-if 3 in a:
-    print(a)
+
+while True:
+    try:
+        print(input())
+    except:
+        break
