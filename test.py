@@ -1,9 +1,3 @@
-import sys
-input = sys.stdin.readline
+a = [1, 2, 3]
 
-
-while True:
-    try:
-        print(input())
-    except:
-        break
+print(a[3:])
