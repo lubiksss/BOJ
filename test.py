@@ -1,3 +1,6 @@
-a = [1, 2, 3]
 
-print(a[3:])
+while True:
+    for i in range(10):
+        if i == 7:
+            break
+        print(i)
