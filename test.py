@@ -1,6 +1,3 @@
+a = {"a": 1, "b": 2}
 
-while True:
-    for i in range(10):
-        if i == 7:
-            break
-        print(i)
+print(len(a))
