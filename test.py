@@ -1,7 +1,4 @@
-import sys
-import time
-import random
+visited = [True, False]
 
-NUM = 10
-lista = random.sample(range(NUM), NUM)
-print(lista)
+if False in visited:
+    print(1)
