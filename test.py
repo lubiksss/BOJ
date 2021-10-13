@@ -1,23 +1,18 @@
-n = 8
-lost = [1, 3, 5]
-reserve = [3, 4, 7]
+import re
 
+p = re.compile('(100+1+|01)')
 
-have = [0] + [1] * (n)
+# print(p.findall('10010111'))
+# print(p.findall('100000000001101'))
 
-n_reserve = set(reserve)-set(lost)
-n_lost = set(lost)-set(reserve)
+sound = input()
+m = p.findall(sound)
 
-for i in n_lost:
-    have[i] = 0
+sum = 0
+for i in m:
+    sum += len(i)
 
-for i in n_reserve:
-    if 1 <= i-1 and not have[i-1]:
-        have[i-1] = 1
-        continue
-
-    if n >= i+1 and not have[i+1]:
-        have[i+1] = 1
-        continue
-
-print(sum(have))
+if len(sound) == sum:
+    print('SUBMARINE')
+else:
+    print('NOISE')
