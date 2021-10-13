@@ -1,18 +1,13 @@
-import re
+from typing import Counter
+a = [1, 2, 1, 0, 0, 0, 1]
 
-p = re.compile('(100+1+|01)')
 
-# print(p.findall('10010111'))
-# print(p.findall('100000000001101'))
+def count(list):
+    cnt = 0
+    for e in list:
+        if e != 0:
+            cnt += 1
+    return cnt
 
-sound = input()
-m = p.findall(sound)
 
-sum = 0
-for i in m:
-    sum += len(i)
-
-if len(sound) == sum:
-    print('SUBMARINE')
-else:
-    print('NOISE')
+print(count(a))
