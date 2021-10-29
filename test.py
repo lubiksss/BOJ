@@ -1,3 +1,3 @@
-a = {"a": 1, "b": 2}
+import sys
 
-print(len(a))
+print(len('c'.encode()))
