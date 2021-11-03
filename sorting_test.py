@@ -104,3 +104,6 @@ def quick_sort(nlist, left, right):
     quick_sort(nlist, rs+1, right)
 
     return nlist
+
+
+print(quick_sort(nlist, 0, len(nlist)-1))
