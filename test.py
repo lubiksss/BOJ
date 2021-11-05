@@ -1,9 +1,16 @@
-a = {}
-a[1] = 10
-a[4] = 11
-a[3] = 12
-a[2] = 9
+parent = [i for i in range(1, 11)]
 
-print(a)
 
-print(next(iter(a)))
+def find(a):
+    if parent[a] == a:
+        return
+    parent[a] = find(parent[a])
+    return parent[a]
+
+
+def union(a, b):
+    a = find(a)
+    b = find(b)
+    if a == b:
+        return
+    parent[b] = a
