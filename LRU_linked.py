@@ -1,3 +1,7 @@
+import time
+import random
+
+
 class node:
     def __init__(self, key, prev=None, next=None):
         self.key = key
@@ -44,19 +48,69 @@ class LRU:
         self.dict[node.key].next = self.dict['tail'].key
 
 
-lru = LRU(5)
-page = [1, 2, 3, 2, 3, 4, 3, 1, 5, 2, 6, 7, 8]
-for i in page:
-    lru.put(node(i))
+# lru = LRU(5)
+# page = [1, 2, 3, 2, 3, 4, 3, 1, 5, 2, 6, 7, 8]
+# for i in page:
+#     lru.put(node(i))
 
 
-key = 'head'
+# key = 'head'
 
-while key != None:
-    print(f'prev: {lru.dict[key].prev}')
-    print(f'key: {lru.dict[key].key}')
-    print(f'next: {lru.dict[key].next}')
-    print()
-    key = lru.dict[key].next
+# while key != None:
+#     print(f'prev: {lru.dict[key].prev}')
+#     print(f'key: {lru.dict[key].key}')
+#     print(f'next: {lru.dict[key].next}')
+#     print()
+#     key = lru.dict[key].next
 
 # 결과: 5, 2, 6, 7, 8
+
+lru = LRU(10)
+
+page = []
+for i in range(1, 100):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=100\t\ttime: {time.time()-start:.5f}')
+
+page = []
+for i in range(1, 1000):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=1000\t\ttime: {time.time()-start:.5f}')
+
+page = []
+for i in range(1, 10000):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=10000\t\ttime: {time.time()-start:.5f}')
+
+page = []
+for i in range(1, 100000):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=100000\ttime: {time.time()-start:.5f}')
+
+page = []
+for i in range(1, 1000000):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=1000000\ttime: {time.time()-start:.5f}')
+
+page = []
+for i in range(1, 10000000):
+    page.append(random.randint(1, 11))
+start = time.time()
+for i in page:
+    lru.put(node(i))
+print(f'LRU\tn=10000000\ttime: {time.time()-start:.5f}')
