@@ -91,26 +91,26 @@ for i in page:
     lru.put(node(i))
 print(f'LRU\tn=10000\t\ttime: {time.time()-start:.5f}')
 
-page = []
-for i in range(1, 100000):
-    page.append(random.randint(1, 11))
-start = time.time()
-for i in page:
-    lru.put(node(i))
-print(f'LRU\tn=100000\ttime: {time.time()-start:.5f}')
+# page = []
+# for i in range(1, 100000):
+#     page.append(random.randint(1, 11))
+# start = time.time()
+# for i in page:
+#     lru.put(node(i))
+# print(f'LRU\tn=100000\ttime: {time.time()-start:.5f}')
 
-page = []
-for i in range(1, 1000000):
-    page.append(random.randint(1, 11))
-start = time.time()
-for i in page:
-    lru.put(node(i))
-print(f'LRU\tn=1000000\ttime: {time.time()-start:.5f}')
+# page = []
+# for i in range(1, 1000000):
+#     page.append(random.randint(1, 11))
+# start = time.time()
+# for i in page:
+#     lru.put(node(i))
+# print(f'LRU\tn=1000000\ttime: {time.time()-start:.5f}')
 
-page = []
-for i in range(1, 10000000):
-    page.append(random.randint(1, 11))
-start = time.time()
-for i in page:
-    lru.put(node(i))
-print(f'LRU\tn=10000000\ttime: {time.time()-start:.5f}')
+# page = []
+# for i in range(1, 10000000):
+#     page.append(random.randint(1, 11))
+# start = time.time()
+# for i in page:
+#     lru.put(node(i))
+# print(f'LRU\tn=10000000\ttime: {time.time()-start:.5f}')

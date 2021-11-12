@@ -4,17 +4,17 @@ nlist = random.sample(range(1, 11), 10)
 print(nlist)
 
 
-def swap(nlist, a, b):
-    nlist[a], nlist[b] = nlist[b], nlist[a]
+def swap(nlist, i, j):
+    nlist[i], nlist[j] = nlist[j], nlist[i]
 
 
 def selection_sort(nlist):
     for i in range(len(nlist)):
-        min_idx = i
+        idx = i
         for j in range(i, len(nlist)):
-            if nlist[min_idx] > nlist[j]:
-                min_idx = j
-        swap(nlist, min_idx, i)
+            if nlist[j] < nlist[idx]:
+                idx = j
+        swap(nlist, i, idx)
     return nlist
 
 
@@ -35,7 +35,7 @@ def insertion_sort(nlist, start=0, gap=1):
 
 
 def shell_sort(nlist):
-    gap = len(nlist)
+    gap = len(nlist)//2
     while gap > 0:
         for i in range(gap):
             insertion_sort(nlist, i, gap)
@@ -46,18 +46,16 @@ def shell_sort(nlist):
 def merge_sort(nlist, left, right):
     if left == right:
         return
-
     mid = (left+right)//2
     merge_sort(nlist, left, mid)
     merge_sort(nlist, mid+1, right)
 
     sorted = [0]*len(nlist)
     idx = left
-    ls = left
-    rs = mid+1
-
+    ls = left  # le = mid
+    rs = mid+1  # re = right
     while ls <= mid and rs <= right:
-        if nlist[ls] <= nlist[rs]:
+        if nlist[ls] < nlist[rs]:
             sorted[idx] = nlist[ls]
             ls += 1
         else:
@@ -74,7 +72,6 @@ def merge_sort(nlist, left, right):
             idx += 1
     for i in range(left, right+1):
         nlist[i] = sorted[i]
-
     return nlist
 
 
@@ -83,9 +80,8 @@ def quick_sort(nlist, left, right):
         return
 
     pvt = left
-    ls = left+1
-    rs = right
-
+    ls = left + 1  # le = right
+    rs = right  # re = left
     while ls <= rs:
         while ls <= right and nlist[ls] <= nlist[pvt]:
             ls += 1
@@ -94,7 +90,7 @@ def quick_sort(nlist, left, right):
         if ls <= rs:
             swap(nlist, ls, rs)
         else:
-            swap(nlist, pvt, rs)
+            swap(nlist, rs, pvt)
 
     quick_sort(nlist, left, rs-1)
     quick_sort(nlist, rs+1, right)
