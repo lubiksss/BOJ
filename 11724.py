@@ -11,13 +11,14 @@ for i in range(M):
     graph[a].append(b)
     graph[b].append(a)
 
-cnt = 1
+cnt = 0
 visited = [0]*(N+1)
 
 for i in range(1, N+1):
     if visited[i] == 0:
         que = dq()
         que.append(i)
+        cnt += 1
         visited[i] = cnt
 
         while que:
@@ -26,6 +27,5 @@ for i in range(1, N+1):
                 if visited[next] == 0:
                     que.append(next)
                     visited[next] = cnt
-        cnt += 1
 
 print(max(visited))
